@@ -24,7 +24,7 @@ ELIZA simulates a Rogerian psychotherapist by using pattern matching and substit
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/eliza.git
+git clone https://github.com/kasinadhsarma/eliza
 cd eliza
 ```
 

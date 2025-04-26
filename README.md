@@ -1,10 +1,14 @@
-# ELIZA Chatbot
+# Enhanced ELIZA Chatbot
 
-A Python implementation of the classic ELIZA psychotherapist chatbot, originally created by Joseph Weizenbaum in 1966.
+A modern Python implementation of the classic ELIZA psychotherapist chatbot, enhanced with state-of-the-art AI capabilities through Model Context Protocol (MCP), LangChain, and Ollama integration.
 
 ## Description
 
-ELIZA simulates a Rogerian psychotherapist by using pattern matching and substitution techniques to formulate responses to user inputs. This implementation includes modern additions and improvements to make the interactions more relevant to contemporary issues and mental health awareness.
+This project combines the classic ELIZA's Rogerian psychotherapist approach with modern AI technologies. It uses:
+- Model Context Protocol (MCP) for standardized AI model interaction
+- LangChain for advanced language model integration
+- Ollama (with Gemma model) for enhanced natural language processing
+- FastAPI for modern web API capabilities
 
 ## Features
 
@@ -30,15 +34,57 @@ cd eliza
 
 2. Make sure you have Python 3.x installed.
 
+3. Install Ollama and the Gemma model:
+```bash
+# Install Ollama (if not already installed)
+curl https://ollama.ai/install.sh | sh
+
+# Pull the Gemma model
+ollama pull gemma3
+```
+
+4. Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+
 ## Usage
 
-Run the program using Python:
+You can use ELIZA in two ways:
 
+1. As a traditional command-line chatbot:
 ```bash
 python3 eliza.py
 ```
 
-To end a conversation with ELIZA, type any of these: "quit", "goodbye", or "bye".
+2. As a modern API server with MCP support:
+```bash
+python3 enhanced_eliza.py
+```
+
+The enhanced version will start a server on port 8000 with the following endpoints:
+- REST API: `http://localhost:8000/chat`
+- MCP endpoint: Available through MCP client connections
+
+Example API usage:
+```python
+import requests
+
+response = requests.post("http://localhost:8000/chat", 
+                        json={"user_input": "Hello, I'm feeling anxious"})
+print(response.json()["response"])
+```
+
+Example MCP usage:
+```python
+from mcp.client import Client
+
+async with Client() as client:
+    response = await client.send("eliza.chat", input="Hello, I'm feeling anxious")
+    print(response["response"])
+```
+
+To end a conversation, type any of these: "quit", "goodbye", or "bye".
 
 ## File Structure
 

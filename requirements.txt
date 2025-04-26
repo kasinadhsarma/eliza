@@ -1,0 +1,4 @@
+# Requirements for ELIZA Chatbot
+
+# Core dependencies
+re>=2.2.1  # For regular expression operations
